@@ -10,13 +10,13 @@
 </head>
 <body>
 
-	<div th:replace="~{menu :: menu}"></div>
+    <div th:replace="~{menu :: menu}"></div>
 
-	<div class="container">
+    <div class="container">
         <h1>Bem-vindo à nossa aplicação</h1>
 
-        <!-- Botão/Link formatado com Materialize -->
-        <a th:href="@{/eventos/formEvento}" class="waves-effect waves-light btn">
+        <!-- Botão/Link corrigido para /eventos/form -->
+        <a th:href="@{/eventos/form}" class="waves-effect waves-light btn">
             <i class="material-icons left">add</i>Cadastrar Evento
         </a>
     </div>
