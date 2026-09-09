@@ -1,12 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Eventos</title>
+    <meta charset="UTF-8">
+    <title>Eventos</title>
+    <!-- Importação dos Ícones do Materialize -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
 
-<h1>Bem vindo a nossa aplicação</h1>
+	<div th:replace="~{menu :: menu}"></div>
 
+	<div class="container">
+        <h1>Bem-vindo à nossa aplicação</h1>
+
+        <!-- Botão/Link formatado com Materialize -->
+        <a th:href="@{/eventos/formEvento}" class="waves-effect waves-light btn">
+            <i class="material-icons left">add</i>Cadastrar Evento
+        </a>
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
