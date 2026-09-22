@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Detalhes do Evento</title>
 </head>
 <body>
@@ -37,15 +38,20 @@
 			<div class="col s12">
 				<div class="card white">
 					<div class="card-content black-text">
-						<span class="card-title"><strong>Adicionar Convidado:</strong></span>
+						<span class="card-title"><strong>Adicionar / Editar Convidado:</strong></span>
 						<form th:action="@{/eventos/{idEvento}(idEvento=${evento.id})}" method="post">
+							
+							<div>
+								<input type="hidden" name="id" th:value="${convidado?.id}">
+							</div>
+
 							<div>
 								<label>Nome: </label>
-								<input type="text" name="nome" required>
+								<input type="text" name="nome" th:value="${convidado?.nome}" required>
 							</div>
 							<div>
 								<label>RG: </label>
-								<input type="text" name="rg" required>
+								<input type="text" name="rg" th:value="${convidado?.rg}" required>
 							</div>
 							<div style="margin-top: 15px;">
 								<button type="submit" class="btn">Salvar</button>
@@ -69,6 +75,7 @@
 									<th>Id</th>
 									<th>Nome</th>
 									<th>RG</th>
+									<th>Ações</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -76,6 +83,17 @@
 									<td th:text="${c.id}">1</td>
 									<td th:text="${c.nome}">Fernando Soares</td>
 									<td th:text="${c.rg}">123</td>
+									<td>
+										<!-- Botão de Editar Convidado -->
+										<a th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/selecionar(idEvento=${evento.id}, idConvidado=${c.id})}" class="btn-floating btn-small waves-effect waves-light blue">
+											<i class="material-icons">edit</i>
+										</a>
+
+										<!-- Botão de Remover Convidado -->
+										<a th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/remover(idEvento=${evento.id}, idConvidado=${c.id})}" class="btn-floating btn-small waves-effect waves-light red">
+											<i class="material-icons">delete</i>
+										</a>
+									</td>
 								</tr>
 							</tbody>
 						</table>
