@@ -55,5 +55,3 @@ public class Convidado {
         return "Convidado [id=" + id + ", nome=" + nome + ", rg=" + rg + ", evento=" + evento + "]";
     }
 }
-
-    
