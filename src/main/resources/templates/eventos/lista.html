@@ -2,9 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Lista de Eventos</title>
 </head>
 <body>
@@ -14,12 +13,7 @@
 	<div class="container" style="margin-top: 30px;">
 		<h3>Lista de eventos</h3>
 
- cadastrando-convidado
-		<!-- Classe corrigida para "striped highlight" na mesma tabela -->
 		<table class="striped highlight">
-
-		<table class="striped">
- main
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -27,6 +21,7 @@
 					<th>Local</th>
 					<th>Data</th>
 					<th>Horário</th>
+					<th>Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,12 +29,17 @@
 					<td th:text="${e.id}">1</td>
 					<td>
 						<a th:href="@{/eventos/{id}(id=${e.id})}">
-							<span th:text="${e.nome}">Aniversário de joão</span>
+							<span th:text="${e.nome}">Aniversário de João</span>
 						</a>
 					</td>
 					<td th:text="${e.local}">Clube</td>
 					<td th:text="${e.data}">25/02/2021</td>
 					<td th:text="${e.horario}">19:00</td>
+					<td>
+						<a th:href="@{/eventos/{id}/remover(id=${e.id})}" class="btn-floating btn-small waves-effect waves-light red">
+							<i class="material-icons">delete</i>
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
