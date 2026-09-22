@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<title>Eventos</title>
+</head>
+<body>
+	<div th:replace="~{menu :: menu}"></div>
+
+	<div class="container" style="margin-top: 30px;">
+
+		<div class="row">
+			<div class="col s12">
+				<h3 class="header">Detalhes do evento</h3>
+			</div>
+		</div>
+
+		<!-- Cartão 1: Detalhes do Evento -->
+		<div class="row">
+			<div class="col s12">
+				<div class="card white">
+					<div class="card-content black-text">
+						<span class="card-title"><strong>Evento</strong></span>
+					
+						<p>
+							<strong>Id: </strong><span th:text="${evento.id}">1</span>
+						</p>
+						<p>
+							<strong>Nome: </strong><span th:text="${evento.nome}">Aniversário de José</span>
+						</p>
+						<p>
+							<strong>Local: </strong><span th:text="${evento.local}">Club</span>
+						</p>
+						<p>
+							<strong>Data: </strong><span th:text="${evento.data}">25/02/2021</span>
+						</p>
+						<p>
+							<strong>Horário: </strong><span th:text="${evento.horario}">20:00</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cartão 2: Adicionar Convidado -->
+		<div class="row">
+			<div class="col s12">
+				<div class="card white">
+					<div class="card-content black-text">
+						<span class="card-title"><strong>Adicionar Convidado:</strong></span>
+						<form th:action="@{/eventos/{idEvento}(idEvento=${evento.id})}" method="post">
+							<div>  
+								<label>Nome: </label> <input type="text" name="nome">
+							</div>
+							<div>  
+								<label>RG: </label> <input type="text" name="rg">
+							</div>
+							
+							<div style="margin-top: 15px;"> 
+								<button type="submit" class="btn">Salvar</button>
+								<button type="reset" class="btn">Limpar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Cartão 3: Tabela de Convidados -->
+		<div class="row">
+			<div class="col s12">
+				<div class="card white">
+					<div class="card-content black-text">
+						<span class="card-title">Convidados</span>
+						<table class="highlight">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Nome</th>
+									<th>Rg</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="c : ${convidados}">
+									<td th:text="${c.id}">1</td>
+									<td th:text="${c.nome}">Fernando Soares</td>
+									<td th:text="${c.rg}">123</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
