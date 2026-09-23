@@ -12,21 +12,24 @@
 		<h1>Cadastrar Evento</h1>
 
 		<form action="/eventos" method="post">
+			<!-- Campo oculto para guardar o ID no caso de edição -->
+			<input type="hidden" name="id" th:value="${evento?.id}" />
+
 			<div>
 				<label>Nome:</label>
-				<input type="text" name="nome" required />
+				<input type="text" name="nome" th:value="${evento?.nome}" required />
 			</div>
 			<div>
 				<label>Local:</label>
-				<input type="text" name="local" required />
+				<input type="text" name="local" th:value="${evento?.local}" required />
 			</div>
 			<div>
 				<label>Data:</label>
-				<input type="text" name="data" placeholder="dd/mm/aaaa" required />
+				<input type="text" name="data" th:value="${evento?.data}" placeholder="dd/mm/aaaa" required />
 			</div>
 			<div>
 				<label>Horário:</label>
-				<input type="text" name="horario" placeholder="00:00" required />
+				<input type="text" name="horario" th:value="${evento?.horario}" placeholder="00:00" required />
 			</div>
 
 			<div style="margin-top: 15px;">
